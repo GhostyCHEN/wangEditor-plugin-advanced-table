@@ -96,6 +96,12 @@
   },
   "peerDependencies": {
     "@wangeditor/editor": ">=5.0.0",
+    "@wangeditor/core": "1.x",
+    "dom7": "^3.0.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.throttle": "^4.1.1",
+    "nanoid": "^3.2.0",
+    "slate": "^0.72.0",
     "snabbdom": "^3.3.1"
   },
   "dependencies": {}
