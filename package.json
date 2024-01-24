@@ -95,8 +95,8 @@
     "webpack-merge": "^5.7.3"
   },
   "peerDependencies": {
-    "@wangeditor/editor": ">=5.0.0",
     "@wangeditor/core": "1.x",
+    "@wangeditor/editor": ">=5.0.0",
     "dom7": "^3.0.0",
     "lodash.isequal": "^4.5.0",
     "lodash.throttle": "^4.1.1",
@@ -104,5 +104,7 @@
     "slate": "^0.72.0",
     "snabbdom": "^3.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "4.17.21"
+  }
 }
