@@ -1,8 +1,8 @@
-import { Editor, Transforms, Range, Node } from 'slate'
+import { Transforms, Range } from 'slate'
 import { genRandomStr } from '../../utils/util'
-import { TABLE_SVG } from '../../constants/svg'
+import { TABLE_SVG } from '../../constants/icon-svg'
 import { DomEditor } from '@wangeditor/editor'
-import $, { Dom7Array, DOMElement } from '../../utils/dom'
+import $ from '../../utils/dom'
 
 function genTableNode(rowNum, colNum) {
   // 拼接rows
@@ -39,10 +39,10 @@ function genDomId() {
 
 class InsertTable {
   constructor() {
-    this.title = '插入表格'
+    this.title = '表格'
     this.iconSvg = TABLE_SVG
     this.tag = 'button'
-    this.showDropdown = true
+    this.showDropPanel = true
     this.$content = null
   }
 
@@ -65,6 +65,7 @@ class InsertTable {
     const types = ['pre', 'ntable', 'list-item']
     const hasVoidOrPreOrTable = selectionElems.some(elem => {
       const type = DomEditor.getNodeType(elem)
+      console.log(editor)
       return types.includes(type) || editor.isVoid(elem)
     })
     if (hasVoidOrPreOrTable) return true // 选区内有 void 或 pre 或 table，禁用
@@ -152,3 +153,5 @@ class InsertTable {
     Transforms.insertNodes(editor, tableNode, { mode: 'highest' })
   }
 }
+
+export default InsertTable

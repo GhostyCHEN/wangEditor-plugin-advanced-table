@@ -1,22 +1,15 @@
-/**
- * @description examples entry
- * @author wangfupeng
- */
-
-import { IDomEditor, createEditor, createToolbar, Boot, IEditorConfig } from '@wangeditor/editor'
-import module from '../src/index'
+import { createEditor, createToolbar, Boot } from '@wangeditor/editor'
+import table from '../src/index'
 
 // 注册
-// Boot.registerModule(module)
+Boot.registerModule(table)
 
 // 编辑器配置
-const editorConfig: Partial<IEditorConfig> = {
-  onChange(editor: IDomEditor) {
+const editorConfig = {
+  onChange(editor) {
     const html = editor.getHtml()
-    // @ts-ignore
     document.getElementById('text-html').value = html
     const contentStr = JSON.stringify(editor.children, null, 2)
-    // @ts-ignore
     document.getElementById('text-json').value = contentStr
   },
 }
@@ -25,12 +18,17 @@ const editorConfig: Partial<IEditorConfig> = {
 const editor = createEditor({
   selector: '#editor-container',
   config: editorConfig,
-  html: `<p>hello&nbsp;world</p>`,
+  html: `<p>hello world</p>`,
 })
 const toolbar = createToolbar({
   editor,
   selector: '#toolbar-container',
-  config: {},
+  config: {
+    insertKeys: {
+      index: 0,
+      keys: ['insertNTable'], // “插入”表格
+    },
+  },
 })
 
 // @ts-ignore 为了便于调试，暴露到 window

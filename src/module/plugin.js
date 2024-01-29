@@ -198,7 +198,7 @@ function withNTable(editor) {
     // TODO:其他需要改api的地方
   }
 
-  return DomEditor
+  return newEditor
 }
 
 export default withNTable

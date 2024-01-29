@@ -2,6 +2,7 @@ import throttle from 'lodash.throttle'
 import { Element as SlateElement, Transforms, Location } from 'slate'
 import { DomEditor } from '@wangeditor/core'
 import { isCellInFirstRow } from '../helpers'
+import { h } from 'snabbdom'
 import $ from '../../utils/dom'
 
 // 拖拽列宽相关信息
@@ -69,23 +70,33 @@ function renderTableCell(cellNode, children, editor) {
   const { colSpan = 1, rowSpan = 1, isHeader = false } = cellNode
 
   if (!isFirstRow) {
-    return (
-      <td colSpan={colSpan} rowSpan={rowSpan}>
-        {children}
-      </td>
+    return h(
+      'td',
+      {
+        attrs: {
+          colSpan: colSpan,
+          rowSpan: rowSpan,
+        },
+      },
+      children
     )
   }
 
   const Tag = isHeader ? 'th' : 'td'
 
-  const vnode = (
-    <Tag
-      colSpan={colSpan}
-      rowSpan={rowSpan}
-      style={{ borderRightWidth: '3px' }}
-      on={{
-        mousemove: throttle(function (this, event) {
-          const elem = this.elm
+  const vnode = h(
+    Tag,
+    {
+      attrs: {
+        colSpan: colSpan,
+        rowSpan: rowSpan,
+      },
+      style: {
+        borderRightWidth: '3px',
+      },
+      on: {
+        mousemove: throttle(function (that, event) {
+          const elem = that.elm
           if (elem == null) return
           const { left, width, top, height } = elem.getBoundingClientRect()
           const { clientX, clientY } = event
@@ -108,10 +119,9 @@ function renderTableCell(cellNode, children, editor) {
             }
           }
         }, 100),
-      }}
-    >
-      {children}
-    </Tag>
+      },
+    },
+    children
   )
   return vnode
 }

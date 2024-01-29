@@ -16,9 +16,7 @@ import $, {
   children,
   each,
   find,
-  Dom7Array,
 } from 'dom7'
-export { Dom7Array } from 'dom7'
 
 if (append) $.fn.append = append
 if (on) $.fn.on = on
@@ -39,7 +37,7 @@ export default $
  * 获取 tagName lower-case
  * @param $elem $elem
  */
-export function getTagName($elem: Dom7Array): string {
+export function getTagName($elem) {
   if ($elem.length) return $elem[0].tagName.toLowerCase()
   return ''
 }
@@ -49,7 +47,7 @@ export function getTagName($elem: Dom7Array): string {
  * @param $elem $elem
  * @param styleKey style key
  */
-export function getStyleValue($elem: Dom7Array, styleKey: string): string {
+export function getStyleValue($elem, styleKey) {
   let res = ''
 
   const styleStr = $elem.attr('style') || '' // 如 'line-height: 2.5; color: red;'
@@ -67,15 +65,3 @@ export function getStyleValue($elem: Dom7Array, styleKey: string): string {
 
   return res
 }
-
-// COMPAT: This is required to prevent TypeScript aliases from doing some very
-// weird things for Slate's types with the same name as globals. (2019/11/27)
-// https://github.com/microsoft/TypeScript/issues/35002
-import DOMNode = globalThis.Node
-import DOMComment = globalThis.Comment
-import DOMElement = globalThis.Element
-import DOMText = globalThis.Text
-import DOMRange = globalThis.Range
-import DOMSelection = globalThis.Selection
-import DOMStaticRange = globalThis.StaticRange
-export { DOMNode, DOMComment, DOMElement, DOMText, DOMRange, DOMSelection, DOMStaticRange }

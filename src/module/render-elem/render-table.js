@@ -1,12 +1,6 @@
-/**
- * @description render table
- * @author wangfupeng
- */
-
 import { Editor, Element as SlateElement, Range, Point, Path } from 'slate'
-import { jsx, VNode } from 'snabbdom'
-import { IDomEditor, DomEditor } from '@wangeditor/core'
-import { TableElement } from '../custom-types'
+import { h } from 'snabbdom'
+import { DomEditor } from '@wangeditor/editor'
 import { getFirstRowCells } from '../helpers'
 
 /**
@@ -54,13 +48,13 @@ function renderTable(elemNode, children, editor) {
   // 第一行的 cells ，以计算列宽
   const firstRowCells = getFirstRowCells(elemNode)
 
-  const vnode = (
-    <div
-      className="table-container"
-      data-selected={selected}
-      on={{
+  const vnode = h(
+    'div',
+    {
+      class: { 'table-container': true },
+      attrs: { 'data-selected': selected },
+      on: {
         mousedown: e => {
-          // @ts-ignore 阻止光标定位到 table 后面
           if (e.target.tagName === 'DIV') e.preventDefault()
 
           if (editor.isDisabled()) return
@@ -78,18 +72,30 @@ function renderTable(elemNode, children, editor) {
 
           editor.select(tableStart) // 选中 table 内部
         },
-      }}
-    >
-      <table width={width} contentEditable={editable}>
-        <colgroup>
-          {firstRowCells.map(cell => {
-            const { width = 'auto' } = cell
-            return <col width={width}></col>
-          })}
-        </colgroup>
-        <tbody>{children}</tbody>
-      </table>
-    </div>
+      },
+    },
+    [
+      h(
+        'table',
+        {
+          attrs: {
+            width: width,
+            contentEditable: editable,
+          },
+        },
+        [
+          h(
+            'colgroup',
+            {},
+            firstRowCells.map(cell => {
+              const { width = 'auto' } = cell
+              return h('col', { attrs: { width: width } })
+            })
+          ),
+          h('tbody', {}, children),
+        ]
+      ),
+    ]
   )
   return vnode
 }

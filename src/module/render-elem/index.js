@@ -1,6 +1,6 @@
-import renderTable from './render-table'
-import renderTableRow from './render-row'
-import renderTableCell from './render-cell'
+import renderTable from './render-table.js'
+import renderTableRow from './render-row.js'
+import renderTableCell from './render-cell.js'
 
 export const renderTableConf = {
   type: 'ntable',
