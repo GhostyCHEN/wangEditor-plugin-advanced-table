@@ -6,6 +6,11 @@ Boot.registerModule(table)
 
 // 编辑器配置
 const editorConfig = {
+  hoverbarKeys: {
+    ntable: {
+      menuKeys: ['deleteNTable', 'fullNWidth'],
+    },
+  },
   onChange(editor) {
     const html = editor.getHtml()
     document.getElementById('text-html').value = html
