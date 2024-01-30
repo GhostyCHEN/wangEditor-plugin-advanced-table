@@ -49,10 +49,10 @@ function renderTable(elemNode, children, editor) {
   const firstRowCells = getFirstRowCells(elemNode)
 
   const vnode = h(
-    'div',
+    'div.table-container',
     {
-      class: { 'table-container': true },
-      attrs: { 'data-selected': selected },
+      className: 'table-container',
+      attrs: { 'data-selected': selected.toString() },
       on: {
         mousedown: e => {
           if (e.target.tagName === 'DIV') e.preventDefault()

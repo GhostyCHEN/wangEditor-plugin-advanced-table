@@ -1,5 +1,5 @@
 {
-  "name": "@wangeditor/plugin-advanced-table",
+  "name": "plugin-advanced-table",
   "version": "1.0.0",
   "description": "wangEditor advanced-table plugin",
   "repository": {

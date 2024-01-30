@@ -167,7 +167,6 @@ function withNTable(editor) {
   // 重写table-cell的全选
   newEditor.selectAll = () => {
     const selection = newEditor.selection
-    console.log(selection)
     if (selection == null) {
       selectAll()
       return

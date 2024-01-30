@@ -65,7 +65,6 @@ class InsertTable {
     const types = ['pre', 'ntable', 'list-item']
     const hasVoidOrPreOrTable = selectionElems.some(elem => {
       const type = DomEditor.getNodeType(elem)
-      console.log(editor)
       return types.includes(type) || editor.isVoid(elem)
     })
     if (hasVoidOrPreOrTable) return true // 选区内有 void 或 pre 或 table，禁用
@@ -109,7 +108,7 @@ class InsertTable {
               .each(td => {
                 const $td = $(td)
                 const { x, y } = $td.dataset()
-                if (x <= focusX || y <= focusY) {
+                if (x <= focusX && y <= focusY) {
                   $td.addClass('active')
                 } else {
                   $td.removeClass('active')

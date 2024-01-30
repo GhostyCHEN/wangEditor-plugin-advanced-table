@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle'
 import { Element as SlateElement, Transforms, Location } from 'slate'
-import { DomEditor } from '@wangeditor/core'
+import { DomEditor } from '@wangeditor/editor'
 import { isCellInFirstRow } from '../helpers'
 import { h } from 'snabbdom'
 import $ from '../../utils/dom'
@@ -17,11 +17,10 @@ function onMouseDown(event) {
   const elem = event.target
   if (elem.tagName !== 'TH' && elem.tagName !== 'TD') return
 
-  if (elem.style.cursor !== 'col-resize') return
-  elem.style.cursor = 'auto'
+  // if (elem.style.cursor !== 'col-resize') return
+  // elem.style.cursor = 'auto'
 
   event.preventDefault()
-
   // 记录必要信息
   isMouseDownForResize = true
   const { clientX } = event
@@ -33,13 +32,14 @@ function onMouseDown(event) {
   $body.on('mousemove', onMouseMove)
   $body.on('mouseup', onMouseUp)
 }
+
 $body.on('mousedown', onMouseDown) // 绑定事件
 
 function onMouseUp(event) {
   isMouseDownForResize = false
   editorWhenMouseDown = null
   cellPathWhenMouseDown = null
-
+  if (!$body.off) return
   // 解绑事件
   $body.off('mousemove', onMouseMove)
   $body.off('mouseup', onMouseUp)
@@ -95,14 +95,13 @@ function renderTableCell(cellNode, children, editor) {
         borderRightWidth: '3px',
       },
       on: {
-        mousemove: throttle(function (that, event) {
+        mousemove: throttle(function (event, that) {
           const elem = that.elm
           if (elem == null) return
           const { left, width, top, height } = elem.getBoundingClientRect()
           const { clientX, clientY } = event
 
           if (isMouseDownForResize) return
-
           // 非 mousedown 状态，计算 cursor 样式
           const matchX = clientX > left + width - 5 && clientX < left + width // X 轴，是否接近 cell 右侧？
           const matchY = clientY > top && clientY < top + height // Y 轴，是否在 cell 之内
