@@ -11,7 +11,7 @@
     "table",
     "advanced table"
   ],
-  "author": "github.com/GhostyCHEN",
+  "author": "ghostychen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GhostyCHEN/wangEditor-plugin-advanced-table/issues"
@@ -19,7 +19,6 @@
   "homepage": "https://github.com/GhostyCHEN/wangEditor-plugin-advanced-table#readme",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/src/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--unhandled-rejections=warn jest --detectOpenHandles --passWithNoTests",
     "test-c": "cross-env NODE_OPTIONS=--unhandled-rejections=warn jest --coverage",
