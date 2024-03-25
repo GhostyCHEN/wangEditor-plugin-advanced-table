@@ -11,7 +11,6 @@ class TableFullWidth {
   getValue(editor) {
     const tableNode = DomEditor.getSelectedNodeByType(editor, 'ntable')
     if (tableNode == null) return false
-    console.log(tableNode)
     return tableNode.width === '100%'
   }
 
