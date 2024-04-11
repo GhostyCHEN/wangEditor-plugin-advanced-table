@@ -1,6 +1,14 @@
 import { h } from 'snabbdom'
 function renderTableRow(elemNode, children, editor) {
-  return h('tr', {}, children)
+  return h(
+    'tr',
+    {
+      attrs: {
+        ...elemNode,
+      },
+    },
+    children
+  )
 }
 
 export default renderTableRow

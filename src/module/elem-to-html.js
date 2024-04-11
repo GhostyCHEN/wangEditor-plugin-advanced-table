@@ -1,8 +1,7 @@
 import { Element } from 'slate'
 
 function tableToHtml(elemNode, childrenHtml) {
-  const { width = 'auto' } = elemNode
-  return `<table width="${width}"><tbody>${childrenHtml}</tbody></table>`
+  return `<table><tbody></tbody></table>`
 }
 
 function tableRowToHtml(elemNode, childrenHtml) {
@@ -18,7 +17,7 @@ function tableCellToHtml(cellNode, childrenHtml) {
 }
 
 export const tableToHtmlConf = {
-  type: 'ntable',
+  type: 'xtable',
   elemToHtml: tableToHtml,
 }
 

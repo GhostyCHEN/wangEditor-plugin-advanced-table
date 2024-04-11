@@ -7,7 +7,7 @@ Boot.registerModule(table)
 // 编辑器配置
 const editorConfig = {
   hoverbarKeys: {
-    ntable: {
+    xtable: {
       menuKeys: ['deleteNTable', 'fullNWidth'],
     },
   },

@@ -1,6 +1,7 @@
 import { Transforms } from 'slate'
 import { DomEditor } from '@wangeditor/editor'
 import { TRASH_SVG } from '../../constants/icon-svg'
+import { TableEditor } from 'slate-table'
 
 class DeleteTable {
   constructor() {
@@ -20,7 +21,7 @@ class DeleteTable {
   isDisabled(editor) {
     if (editor.selection == null) return true
 
-    const tableNode = DomEditor.getSelectedNodeByType(editor, 'ntable')
+    const tableNode = DomEditor.getSelectedNodeByType(editor, 'xtable')
 
     if (tableNode == null) {
       return true
@@ -32,7 +33,7 @@ class DeleteTable {
   exec(editor, value) {
     if (this.isDisabled(editor)) return
     // 删除表格
-    Transforms.removeNodes(editor, { mode: 'highest' })
+    TableEditor.removeTable(editor)
   }
 }
 

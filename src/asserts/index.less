@@ -1,79 +1,9 @@
-@size: 14px;
-
-// textarea - less vars
-@textarea-color: var(--w-e-textarea-color);
-@textarea-bg-color: var(--w-e-textarea-bg-color);
-@textarea-selected-border-color: var(--w-e-textarea-selected-border-color);
-@textarea-slight-color: var(--w-e-textarea-slight-color);
-@textarea-slight-bg-color: var(--w-e-textarea-slight-bg-color);
-@textarea-border-color: var(--w-e-textarea-border-color);
-@textarea-slight-border-color: var( --w-e-textarea-slight-border-color);
-@textarea-handler-bg-color: var(--w-e-textarea-handler-bg-color);
-
-// toolbar - less vars
-@toolbar-color: var(--w-e-toolbar-color);
-@toolbar-bg-color: var(--w-e-toolbar-bg-color);
-@toolbar-active-color: var(--w-e-toolbar-active-color);
-@toolbar-active-bg-color: var(--w-e-toolbar-active-bg-color);
-@toolbar-disabled-color: var(--w-e-toolbar-disabled-color);
-@toolbar-border-color: var(--w-e-toolbar-border-color);
-@toolbar-height: 40px;
-
-// modal - less vars
-@modal-button-bg-color: var(--w-e-modal-button-bg-color);
-@modal-button-border-color: var(--w-e-modal-button-border-color);
-
-// less mixins
-.shadowBordered(@shadowRadius: 5px) {
-  border: 1px solid @toolbar-border-color;
-  border-radius: 3px;
-  box-shadow: 0 2px @shadowRadius #0000001f;
-}
-.w-e-text-container [data-slate-editor] {
-  .table-container {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px dashed var(--w-e-textarea-border-color);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-
-  table {
-    border-collapse: collapse;
-
-    td,th {
-      border: 1px solid @textarea-border-color;
-      padding: 3px 5px;
-      min-width: 30px;
-      text-align: left;
-      line-height: 1.5;
-    }
-    th {
-      background-color: @textarea-slight-bg-color;
-      text-align: center;
-      font-weight: bold;
-    }
-  }
-}
-
-// --------------------------------- 分割线 ---------------------------------
-
-.w-e-panel-content-table {
-  background-color: @toolbar-bg-color;
-
-  table {
-    border-collapse: collapse;
-  }
-
-  td {
-    border: 1px solid @toolbar-border-color;
-    padding: 3px 5px;
-    width: 20px;
-    height: 15px;
-    cursor: pointer;
-  }
-  td.active {
-    background-color: @toolbar-active-bg-color;
+.table-container{
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  .selected-cell{
+    background-color: #c7e7fb;
   }
 }
