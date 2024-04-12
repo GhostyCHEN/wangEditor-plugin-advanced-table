@@ -1,4 +1,3 @@
-import { Transforms } from 'slate'
 import { DomEditor } from '@wangeditor/editor'
 import { TRASH_SVG } from '../../constants/icon-svg'
 import { TableEditor } from 'slate-table'

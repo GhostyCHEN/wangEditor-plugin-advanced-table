@@ -10,7 +10,7 @@ import {
 import { tableToHtmlConf, tableRowToHtmlConf, tableCellToHtmlConf } from './elem-to-html'
 import { preParseTableHtmlConf } from './pre-parse-html'
 import { parseCellHtmlConf, parseRowHtmlConf, parseTableHtmlConf } from './parse-elem-html'
-import { insertTableMenuConf, deleteTableMenuConf, fullWidthMenuConf } from './menu/index'
+import { insertTableMenuConf, deleteTableMenuConf, mergeCellMenuConf } from './menu/index'
 
 const table = {
   renderElems: [
@@ -24,7 +24,7 @@ const table = {
   elemsToHtml: [tableToHtmlConf, tableRowToHtmlConf, tableCellToHtmlConf],
   preParseHtml: [preParseTableHtmlConf],
   parseElemsHtml: [parseCellHtmlConf, parseRowHtmlConf, parseTableHtmlConf],
-  menus: [insertTableMenuConf, deleteTableMenuConf, fullWidthMenuConf],
+  menus: [insertTableMenuConf, deleteTableMenuConf, mergeCellMenuConf],
   editorPlugin: withNTable,
 }
 

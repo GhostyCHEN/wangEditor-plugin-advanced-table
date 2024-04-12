@@ -1,24 +1,24 @@
 import InsertTable from './InsertTable'
 import DeleteTable from './DeleteTable'
-import FullWidth from './FullWidth'
+import MergeCell from './MergeCell'
 
 export const insertTableMenuConf = {
-  key: 'insertNTable',
+  key: 'insertXTable',
   factory() {
     return new InsertTable()
   },
 }
 
 export const deleteTableMenuConf = {
-  key: 'deleteNTable',
+  key: 'deleteXTable',
   factory() {
     return new DeleteTable()
   },
 }
 
-export const fullWidthMenuConf = {
-  key: 'fullNWidth',
+export const mergeCellMenuConf = {
+  key: 'mergeXCell',
   factory() {
-    return new FullWidth()
+    return new MergeCell()
   },
 }

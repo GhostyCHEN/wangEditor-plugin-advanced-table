@@ -8,7 +8,7 @@ Boot.registerModule(table)
 const editorConfig = {
   hoverbarKeys: {
     xtable: {
-      menuKeys: ['deleteNTable', 'fullNWidth'],
+      menuKeys: ['deleteXTable', 'mergeXCell'],
     },
   },
   onChange(editor) {
@@ -31,7 +31,7 @@ const toolbar = createToolbar({
   config: {
     insertKeys: {
       index: 0,
-      keys: ['insertNTable'], // “插入”表格
+      keys: ['insertXTable'], // “插入”表格
     },
   },
 })
