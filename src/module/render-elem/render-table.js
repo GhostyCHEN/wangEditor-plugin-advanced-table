@@ -4,6 +4,7 @@ import { TableCursor } from 'slate-table'
 
 function renderTable(elemNode, children, editor) {
   const [isSelecting] = TableCursor.selection(editor)
+  console.log('isSelecting', isSelecting)
   const vnode = h(
     'table',
     {

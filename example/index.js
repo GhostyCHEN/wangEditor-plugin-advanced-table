@@ -1,4 +1,4 @@
-import { createEditor, createToolbar, Boot } from '@wangeditor/editor'
+import { createEditor, createToolbar, SlateElement, Boot } from '@wangeditor/editor'
 import table from '../src/index'
 
 // 注册
@@ -9,6 +9,18 @@ const editorConfig = {
   hoverbarKeys: {
     xtable: {
       menuKeys: ['deleteXTable', 'mergeXCell'],
+    },
+    text: {
+      menuKeys: [
+        'headerSelect',
+        'bulletedList',
+        '|',
+        'bold',
+        'through',
+        'color',
+        'bgColor',
+        'clearStyle',
+      ],
     },
   },
   onChange(editor) {
@@ -33,6 +45,7 @@ const toolbar = createToolbar({
       index: 0,
       keys: ['insertXTable'], // “插入”表格
     },
+    excludeKeys: ['table'],
   },
 })
 
