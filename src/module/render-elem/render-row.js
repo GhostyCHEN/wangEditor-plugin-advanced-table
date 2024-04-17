@@ -4,7 +4,7 @@ function renderTableRow(elemNode, children, editor) {
     'tr',
     {
       attrs: {
-        ...elemNode,
+        // ...elemNode,
       },
     },
     children

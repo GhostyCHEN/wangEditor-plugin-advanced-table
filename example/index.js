@@ -35,7 +35,8 @@ const editorConfig = {
 const editor = createEditor({
   selector: '#editor-container',
   config: editorConfig,
-  html: `<p>hello world</p>`,
+  // html: `<p>hello world</p><table><tbody><tr><td colspan="1" rowspan="1"><h2>sadasdsd😀</h2></td><td colspan="1" rowspan="1"><p><br></p></td><td colspan="1" rowspan="1"><p><br></p></td></tr><tr><td colspan="1" rowspan="1"><p><br></p></td><td colspan="1" rowspan="1"><p><br></p></td><td colspan="1" rowspan="1"><p><br></p></td></tr><tr><td colspan="1" rowspan="1"><p><br></p></td><td colspan="1" rowspan="1"><p><br></p></td><td colspan="1" rowspan="1"><p><br></p></td></tr></tbody></table><p><br></p>`,
+  html: 'hello table!🫡',
 })
 const toolbar = createToolbar({
   editor,
@@ -45,7 +46,7 @@ const toolbar = createToolbar({
       index: 0,
       keys: ['insertXTable'], // “插入”表格
     },
-    excludeKeys: ['table'],
+    // excludeKeys: ['insertTable'],
   },
 })
 

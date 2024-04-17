@@ -1,7 +1,10 @@
 import { Element } from 'slate'
 
 function tableToHtml(elemNode, childrenHtml) {
-  return `<table><tbody></tbody></table>`
+  const { originTable = [] } = elemNode
+  return `<table originTable="${JSON.stringify(
+    originTable
+  )}"><tbody>${childrenHtml}</tbody></table>`
 }
 
 function tableRowToHtml(elemNode, childrenHtml) {
@@ -9,11 +12,11 @@ function tableRowToHtml(elemNode, childrenHtml) {
 }
 
 function tableCellToHtml(cellNode, childrenHtml) {
-  const { colSpan = 1, rowSpan = 1, isHeader = false, width = 'auto' } = cellNode
+  const { colSpan = 1, rowSpan = 1 } = cellNode
 
-  const tag = isHeader ? 'th' : 'td'
+  // const tag = isHeader ? 'th' : 'td'
 
-  return `<${tag} colspan="${colSpan}" rowspan="${rowSpan}" width="${width}">${childrenHtml}</${tag}>`
+  return `<td colspan="${colSpan}" rowspan="${rowSpan}">${childrenHtml}</td>`
 }
 
 export const tableToHtmlConf = {
@@ -22,11 +25,11 @@ export const tableToHtmlConf = {
 }
 
 export const tableRowToHtmlConf = {
-  type: 'ntable-row',
+  type: 'xtable-row',
   elemToHtml: tableRowToHtml,
 }
 
 export const tableCellToHtmlConf = {
-  type: 'ntable-cell',
+  type: 'xtable-cell',
   elemToHtml: tableCellToHtml,
 }

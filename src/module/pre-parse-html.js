@@ -18,6 +18,6 @@ function preParse(tableElem) {
 }
 
 export const preParseTableHtmlConf = {
-  selector: 'ntable',
+  selector: 'xtable',
   preParseHtml: preParse,
 }

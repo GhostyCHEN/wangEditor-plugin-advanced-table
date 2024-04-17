@@ -4,28 +4,23 @@ import $, { getTagName, getStyleValue } from '../utils/dom'
 
 function parseCellHtml(elem, children, editor) {
   const $elem = $(elem)
+  // children = children.filter(child => {
+  //   if (Text.isText(child)) return true
+  //   if (editor.isInline(child)) return true
+  //   return false
+  // })
 
-  children = children.filter(child => {
-    if (Text.isText(child)) return true
-    if (editor.isInline(child)) return true
-    return false
-  })
-
-  // 若无children，则用纯文本
-  if (children.length === 0) {
-    children = [{ text: $elem.text().replace(/\s+/gm, ' ') }]
-  }
+  // // 若无children，则用纯文本
+  // if (children.length === 0) {
+  //   children = [{ text: $elem.text().replace(/\s+/gm, ' ') }]
+  // }
 
   const colSpan = parseInt($elem.attr('colSpan') || '1')
   const rowSpan = parseInt($elem.attr('rowSpan') || '1')
-  const width = $elem.attr('width') || 'auto'
-
   return {
-    type: 'ntable-cell',
-    isHeader: getTagName($elem) === 'th',
+    type: 'xtable-cell',
     colSpan,
     rowSpan,
-    width,
     children,
   }
 }
@@ -37,8 +32,8 @@ export const parseCellHtmlConf = {
 
 function parseRowHtml(elem, children, editor) {
   return {
-    type: 'ntable-row',
-    children: children.filter(child => DomEditor.getNodeType(child) === 'ntable-cell'),
+    type: 'xtable-row',
+    children: children.filter(child => DomEditor.getNodeType(child) === 'xtable-cell'),
   }
 }
 
@@ -48,17 +43,9 @@ export const parseRowHtmlConf = {
 }
 
 function parseTableHtml(elem, children, editor) {
-  const $elem = $(elem)
-  // 计算宽度
-  let width = 'auto'
-  if (getStyleValue($elem, 'width') === '100%' || $elem.attr('width') === '100%') {
-    width = '100%'
-  }
-
   return {
-    type: 'ntable',
-    width,
-    children: children.filter(child => DomEditor.getNodeType(child) === 'ntable-row'),
+    type: 'xtable',
+    children: children.filter(child => DomEditor.getNodeType(child) === 'xtable-row'),
   }
 }
 
